@@ -1,0 +1,41 @@
+acclookup: 
+	opens up the ACC info on the accession number you input
+
+deinterleave_fasta: 
+	Interleaved sequence format is STUPID. Here's an example:.
+
+	>sequence1
+	atgcatgcatgcatgcatgcatgc
+	atgcatgcatgcatgcatgcatgc <- LINE BREAKS
+	atgcatgcatgcatgcatgcatgc
+	>sequence2
+	atgcatgcatgcatgcatgcatgc
+	atgcatgcatgcatgcatgcatgc
+	atgcatgcatgcatgcatgcatgc
+
+	It's a relic from when people used to actually look at DNA sequence data
+	through a terminal, before they could use less -S I guess. Nowadays, it's
+	ALWAYS better to use sequential format:
+
+	>sequence1
+	atgcatgcatgcatgcatgcatgcatgcatgcatgcatgcatgcatgcatgcatgcatgcatgcatgcatgc
+	>sequence2
+	atgcatgcatgcatgcatgcatgcatgcatgcatgcatgcatgcatgcatgcatgcatgcatgcatgcatgc
+
+	This script takes an interleaved fasta file, and outputs a sequential fasta file.
+
+deinterleave_sort_fasta:
+	same as above, but output is sorted by name.
+
+deinterleave_sort_fasta_length:
+	same as above, but output is sorted by sequence length.
+
+names_to_ACC:
+	If you download fasta data from GenBank, the fasta headers are long messes. This script will get
+	rid of everything in the header except for the accession number.
+
+RNA_to_DNA:
+	Pretty self-explanitory. Changes Us to Ts, but only in sequence data. Not in headers.
+
+unalign_fasta:
+	Removes all gaps from fasta file.

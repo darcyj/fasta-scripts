@@ -1,0 +1,6 @@
+#! /bin/bash
+# this script replaces names with ACCs contained within them. hopefully.
+# lines that don't include an ACC will not be messed with, unless they have something that *looks* like an ACC
+# args: namestoACC <[input] >[output]
+
+sed -r 's/>.*\|([A-Z]+[0-9][0-9][0-9][0-9]+).*/>\1/' <$1

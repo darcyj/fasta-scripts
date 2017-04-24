@@ -1,0 +1,11 @@
+#! /bin/bash
+# this script de-interleaves a fasta file, AND sorts it by LENGTH
+# args: deinterleave_sort_fasta_length <[input] >[output]
+
+sed -r 's/(>.*)/%\1@/' < $1 >temp1
+tr -d '\n' <temp1 >temp2
+tr '%' '\n' <temp2 >temp3
+tr '@' '\n' <temp3 >temp4
+sed 1d <temp4 >temp5
+cat temp5 | perl -e 'while (<>) {$h=$_; $s=<>; $seqs{$h}=$s;} foreach $header (reverse sort {length($seqs{$a}) <=> length($seqs{$b})} keys %seqs) {print $header.$seqs{$header}}'
+rm temp1 temp2 temp3 temp4 temp5

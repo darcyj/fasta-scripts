@@ -1,0 +1,5 @@
+#! /bin/bash
+# this script takes a fasta file with RNA sequence (AUCG) and converts it into DNA (ATCG)
+# args: unalign_fasta <[input] >[output]
+
+cat $1 | sed -r '/^[^>]/ s/U/T/g'

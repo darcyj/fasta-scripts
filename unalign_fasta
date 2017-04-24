@@ -1,0 +1,9 @@
+#! /bin/bash
+# this script unaligns a fasta file
+# args: unalign_fasta <[input] >[output]
+
+# old - hit headers
+# tr -d '-' <$1 | tr -d '.'
+
+# new - doesn't hit headers
+cat $1 | sed -r '/^[^>]/ s/-//g' | sed -r '/^[^>]/ s/\.//g'
