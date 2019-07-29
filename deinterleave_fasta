@@ -1,11 +1,5 @@
 #! /bin/bash
 # this script de-interleaves a fasta file, but does NOT sort it. 
 # args: deinterleave_fasta <[input] >[output]
+sed -r 's/(>.*)/%\1@/' <$1 | tr -d '\n' | tr '%' '\n' | tr '@' '\n' | sed 1d 
 
-sed -r 's/(>.*)/%\1@/' <$1 >temp1
-tr -d '\n' <temp1 >temp2
-tr '%' '\n' <temp2 >temp3
-#sort would go here
-tr '@' '\n' <temp3 >temp4
-sed 1d <temp4
-rm temp1 temp2 temp3 temp4
