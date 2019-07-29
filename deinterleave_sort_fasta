@@ -2,10 +2,4 @@
 # this script de-interleaves a fasta file, AND sorts it by name
 # args: deinterleave_sort_fasta <[input] >[output]
 
-sed -r 's/(>.*)/%\1@/' < $1 >temp1
-tr -d '\n' <temp1 >temp2
-tr '%' '\n' <temp2 >temp3
-sort <temp3 >temp4
-tr '@' '\n' <temp4 >temp5
-sed 1d <temp5
-rm temp1 temp2 temp3 temp4 temp5
+sed -r 's/(>.*)/%\1@/' <$1 | tr -d '\n' | tr '%' '\n' | sort | tr '@' '\n' | sed 1d 
